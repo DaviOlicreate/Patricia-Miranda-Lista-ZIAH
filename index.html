@@ -349,7 +349,7 @@
         }
 
         /* -----------------------------------------------------------------
-           6. PROVA SOCIAL
+           6. PROVA SOCIAL (com Carrossel)
            ----------------------------------------------------------------- */
         #social-proof {
             background-color: var(--white);
@@ -365,11 +365,28 @@
             display: block;
         }
 
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
+        /* O contêiner que esconde o overflow */
+        .testimonial-looper {
+            overflow: hidden;
             margin-top: 50px;
+        }
+
+        /* A faixa que se move */
+        .testimonials-grid {
+            display: flex;
+            gap: 30px;
+            width: max-content; /* Importante para que a faixa seja larga o suficiente */
+            animation: scroll-testimonials 40s linear infinite;
+        }
+
+        /* Pausa a animação no hover */
+        .testimonial-looper:hover .testimonials-grid {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll-testimonials {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
         }
 
         .testimonial-card {
@@ -378,6 +395,8 @@
             border-radius: var(--radius-sm);
             text-align: center;
             transition: transform 0.3s;
+            width: 450px; /* Largura fixa para cada card */
+            flex-shrink: 0; /* Impede que os cards encolham */
         }
 
         .testimonial-card:hover { transform: translateY(-5px); }
@@ -401,10 +420,9 @@
             font-weight: 700;
             font-size: 0.9rem;
         }
+        
+        /* A regra de mídia anterior foi removida pois agora o layout é flexível */
 
-        @media (min-width: 768px) {
-            .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
-        }
 
         /* -----------------------------------------------------------------
            7. PALESTRANTES (Carrossel Interativo)
@@ -771,28 +789,37 @@
             <span class="stats-highlight">+500 MULHERES ESPERADAS</span>
             <h2>O Ponto de Encontro da Mulher Empreendedora</h2>
             
-            <div class="testimonials-grid">
+            <div class="testimonial-looper">
+                <div class="testimonials-grid">
                 <!-- Card 1 -->
                 <div class="testimonial-card">
                     <!-- ARQUIVO LOCAL -->
-                    <img src="depoimento-1.jpg" alt="Participante" class="testimonial-img">
-                    <p class="testimonial-text">"Participar do ZIAH mudou minha visão sobre meu negócio. O networking é surreal e a energia é contagiante!"</p>
-                    <p class="testimonial-author">Participante Edição 1</p>
+                    <img src="depoimento-1.jpg" alt="ERICA ALVES" class="testimonial-img">
+                    <p class="testimonial-text">Participar do Ziah para mim foi viver um encontro marcado por Deus,nada ali foi por acaso. Desde o primeiro momento,vendo todo o cuidado com a decoração senti a presença d’Ele conduzindo cada detalhe, cada palavra e cada conexão entre mulheres, foi algo diferente! Foi um ambiente de acolhimento, onde todas as mulheres se sentiram à vontade! O Ziah para mim,foi muito mais que um Evento, foi um chamado ao autoconhecimento, onde fomos convidadas a olhar para dentro, e fortalecer nossa identidade em Deus. Ali, compreendi que o verdadeiro empoderamento das mulheres nasce quando nossos sonhos se alinham com o propósito de Deus, aí sim nossa caminhada ganha sentido. Saí do Ziah com o coração mais sensível à voz de Deus, e com a certeza de que quando mulheres se reúnem com propósito, o céu se move.</p>
+                    <p class="testimonial-author">ERICA ALVES</p>
                 </div>
                 <!-- Card 2 -->
                 <div class="testimonial-card">
                     <!-- ARQUIVO LOCAL -->
-                    <img src="depoimento-2.jpg" alt="Participante" class="testimonial-img">
-                    <p class="testimonial-text">"Saí de lá com parcerias fechadas e a mente fervilhando de ideias. Impossível perder a próxima."</p>
-                    <p class="testimonial-author">Participante Edição 1</p>
+                    <img src="depoimento-2.jpg" alt="ELISANGELA E ELAINE" class="testimonial-img">
+                    <p class="testimonial-text">Eu, Elisângela, e a Elaine da Elaine Mello Tricot amamos participar do encontro de mulheres Zia. Foi uma experiência simplesmente incrível e emocionante. Um daqueles momentos que tocam a alma, sabe? O Zia é conexão real, troca verdadeira, acolhimento e muita energia boa. A gente se sentiu profundamente conectada, inspirada e envolvida por cada detalhe. É algo único, que vai muito além de um encontro é vivência, é sentimento. Saímos de lá apaixonadas, com o coração cheio, leves, renovadas e super realizadas. Só coisas boas, aprendizados, amor e uma sensação maravilhosa de pertencimento. Vale muito a pena viver essa experiência. O Zia é daqueles encontros que ficam na memória e no coração pra sempre.</p>
+                    <p class="testimonial-author">ELISANGELA E ELAINE</p>
                 </div>
                 <!-- Card 3 -->
                 <div class="testimonial-card">
                     <!-- ARQUIVO LOCAL -->
-                    <img src="depoimento-3.jpg" alt="Participante" class="testimonial-img">
-                    <p class="testimonial-text">"Não é só um evento, é uma experiência de vida. Recomendo para todas as mulheres."</p>
-                    <p class="testimonial-author">Participante Edição 1</p>
+                    <img src="depoimento-3.jpg" alt="FERNANDA LAGO" class="testimonial-img">
+                    <p class="testimonial-text">Foi uma honra imensa participar de um evento tão especial e cheio de propósito como o Ziah. Uma noite incrível, pensada nos mínimos detalhes, com muito cuidado e carinho voltados para todas as mulheres. Um evento impecável, cheio de amor em cada etapa. Desde a chegada, com uma recepção acolhedora e atenciosa, passando pelos drinques maravilhosos, até uma mesa de Sunset Coffee simplesmente encantadora. A palestra foi profunda e inspiradora, repleta de sabedoria e reflexões. O jantar estava maravilhoso e, para completar, ainda fomos presenteadas com uma caixa cheia de mimos lindos e cheios de significado. Sem falar no networking e nas conversas leves e profundas com mulheres incríveis. Um verdadeiro encontro de almas, talentos e histórias. Um evento sem defeitos. E como se tudo isso não bastasse, ainda houve a doação de uma parte do evento para uma instituição, mostrando que o propósito vai muito além de uma noite especial. Obrigada, Pati, por trazer para a nossa cidade um evento de nível tão alto, valorizando mulheres batalhadoras, cheias de talento e propósito. Precisamos de mais eventos assim, que aproximam mulheres, onde não existe concorrência nem competição, apenas troca, conexão e experiências incríveis.</p>
+                    <p class="testimonial-author">FERNANDA LAGO</p>
                 </div>
+                <!-- Card 4 -->
+                <div class="testimonial-card">
+                    <!-- ARQUIVO LOCAL -->
+                    <img src="depoimento-4.jpg" alt="DAYANE ARAÚJO" class="testimonial-img">
+                    <p class="testimonial-text">Oiee, eu sou Dayane Araújo e estou passando pra compartilhar um pouquinho da minha experiência no evento ZIAH.. Além de ser um momento muito agradável, por estar com outras mulheres com vivências e desafios parecidos, foi um espaço de troca e inspiração muito valiosa. A estrutura do evento estava impecável, tudo pensado com muito carinho, desde a recepção até o final. Foi um momento ímpar, necessário e inspirador. Toda mulher merece viver uma experiência como essa. 🧡</p>
+                    <p class="testimonial-author">DAYANE ARAÚJO</p>
+                </div>
+            </div>
             </div>
         </div>
     </section>
@@ -1086,6 +1113,16 @@
                 item.classList.toggle('active');
             });
         });
+
+        // 5. Lógica do Carrossel de Depoimentos
+        const testimonialTrack = document.querySelector('.testimonials-grid');
+        if (testimonialTrack) {
+            const testimonialCards = Array.from(testimonialTrack.children);
+            testimonialCards.forEach(card => {
+                const clone = card.cloneNode(true);
+                testimonialTrack.appendChild(clone);
+            });
+        }
 
     </script>
 </body>
