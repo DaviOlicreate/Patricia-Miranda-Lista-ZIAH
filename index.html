@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZIAH - 2ª Edição | Luz e Esplendor</title>
+    <meta name="description" content="Junte-se a mulheres visionárias na 2ª Edição do evento que une estratégia, propósito e conexões genuínas em Jacutinga-MG.">
+
+    <!-- Fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Ícones Lucide (Leve e SVG) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* -----------------------------------------------------------------
+           1. VARIÁVEIS E RESET (DESIGN SYSTEM ZIAH)
+           ----------------------------------------------------------------- */
+        :root {
+            /* Paleta de Cores */
+            --primary: #F27830;       /* Laranja Vibrante */
+            --primary-dark: #d65d1e;  /* Laranja Escuro (Hover) */
+            --secondary: #4A2C2A;     /* Marrom Café Profundo */
+            --secondary-light: #6b4340;
+            --bg-warm: #FAF5EF;       /* Beige/Off-white quente */
+            --white: #FFFFFF;
+            --text-dark: #333333;
+            --text-gray: #666666;
+            
+            /* Tipografia */
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Montserrat', sans-serif;
+
+            /* Espaçamentos e Layout */
+            --container-width: 1200px;
+            --gutter: 20px;
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            
+            /* Sombras (Warm Luxury) */
+            --shadow-card: 0 10px 30px rgba(74, 44, 42, 0.08);
+            --shadow-float: 0 20px 40px rgba(242, 120, 48, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--secondary);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* -----------------------------------------------------------------
+           2. UTILITÁRIOS E TIPOGRAFIA
+           ----------------------------------------------------------------- */
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--gutter);
+        }
+
+        .text-center { text-align: center; }
+        .text-primary { color: var(--primary); }
+        .text-secondary { color: var(--secondary); }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            font-family: var(--font-sans);
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 16px 32px;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(242, 120, 48, 0.3);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(242, 120, 48, 0.4);
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        @media (max-width: 768px) {
+            .section-padding { padding: 60px 0; }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.8rem; }
+        }
+
+        /* -----------------------------------------------------------------
+           3. SEÇÃO HERO (DOBRA 1)
+           ----------------------------------------------------------------- */
+        #hero {
+            position: relative;
+            min-height: 100vh; /* Ocupa a tela toda */
+            display: flex;
+            align-items: center;
+            /* ARQUIVO LOCAL: Certifique-se de que hero-bg.jpg está na pasta */
+            background-image: linear-gradient(to right, rgba(20, 10, 5, 0.85), rgba(74, 44, 42, 0.6)), url('hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        /* Novo estilo para a barra de informações no topo */
+        .hero-info-bar {
+            display: inline-flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 24px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #fcece4;
+            letter-spacing: 0.5px;
+        }
+        
+        .hero-info-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Animação da Seta Dupla Alternada */
+        .scroll-indicator {
+            margin-top: 20px;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        .scroll-arrow {
+            display: block;
+            margin-top: -30px; /* Sobreposição para conectar as setas */
+            animation: arrow-pulse 2s infinite ease-in-out;
+        }
+
+        .scroll-arrow:first-child {
+            margin-top: 0;
+        }
+
+        /* Atraso na segunda seta para criar o efeito alternado */
+        .scroll-arrow:last-child {
+            animation-delay: 1s; 
+        }
+
+        @keyframes arrow-pulse {
+            0%, 100% { opacity: 0.1; transform: translateY(0); }
+            50% { opacity: 1; transform: translateY(10px); }
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero-content h1 span {
+            color: var(--primary);
+            font-style: italic;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 10px; /* Reduzi um pouco para aproximar a seta */
+            opacity: 0.9;
+        }
+
+        /* Card de Captura */
+        .capture-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-float);
+            max-width: 450px;
+            margin: 0 auto;
+            color: var(--secondary);
+            border-top: 5px solid var(--primary);
+        }
+
+        .capture-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .microcopy {
+            font-size: 0.8rem;
+            text-align: center;
+            color: var(--text-gray);
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        @media (min-width: 992px) {
+            .hero-grid { grid-template-columns: 1.2fr 1fr; }
+            .hero-content h1 { font-size: 3.5rem; }
+            .capture-card { margin-right: 0; }
+        }
+
+        /* -----------------------------------------------------------------
+           4. SEÇÃO VÍDEO
+           ----------------------------------------------------------------- */
+        #video-section {
+            background-color: var(--bg-warm);
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .video-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            background: #000;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+        }
+
+        .video-wrapper video, .video-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media (min-width: 992px) {
+            .video-grid { grid-template-columns: 1fr 1.2fr; }
+        }
+
+        /* -----------------------------------------------------------------
+           5. MARQUEE (Barra de Reforço)
+           ----------------------------------------------------------------- */
+        .marquee {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 15px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+
+        .marquee-item {
+            display: inline-block;
+            padding: 0 40px;
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* -----------------------------------------------------------------
+           6. PROVA SOCIAL
+           ----------------------------------------------------------------- */
+        #social-proof {
+            background-color: var(--white);
+        }
+
+        .stats-highlight {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            background: var(--bg-warm);
+            padding: 30px;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .testimonial-card:hover { transform: translateY(-5px); }
+
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 3px solid var(--primary);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            font-family: var(--font-serif);
+            margin-bottom: 15px;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        @media (min-width: 768px) {
+            .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        /* -----------------------------------------------------------------
+           7. PALESTRANTES (Carrossel Interativo)
+           ----------------------------------------------------------------- */
+        #speakers {
+            background-color: var(--bg-warm);
+            overflow: hidden;
+        }
+
+        .carousel-container {
+            position: relative;
+            margin-top: 40px;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 20px;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE */
+        }
+
+        .carousel-track::-webkit-scrollbar { display: none; }
+
+        .speaker-card {
+            flex: 0 0 85%; /* Mobile: 85% width */
+            scroll-snap-align: center;
+            background: var(--white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            position: relative;
+        }
+
+        .speaker-img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .speaker-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .speaker-name {
+            font-size: 1.25rem;
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+
+        .speaker-role {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Controles do Carrossel */
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .control-btn {
+            background: var(--secondary);
+            color: var(--white);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .control-btn:hover { background: var(--primary); }
+
+        @media (min-width: 768px) {
+            .speaker-card { flex: 0 0 calc(33.333% - 14px); } /* Desktop: 3 cards */
+        }
+
+        /* -----------------------------------------------------------------
+           8. PILARES E BENEFÍCIOS
+           ----------------------------------------------------------------- */
+        #pillars {
+            background-color: var(--white);
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .pillar-card {
+            position: relative;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            height: 300px;
+            group: 1;
+        }
+
+        .pillar-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .pillar-card:hover .pillar-bg { transform: scale(1.1); }
+
+        .pillar-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(74,44,42, 0.9), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            color: var(--white);
+        }
+
+        .pillar-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        @media (min-width: 992px) {
+            .pillars-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        /* -----------------------------------------------------------------
+           9. LOCAL, FAQ E FOOTER
+           ----------------------------------------------------------------- */
+        #location {
+            background-color: var(--secondary);
+            color: var(--bg-warm);
+            padding: 60px 0;
+            /* text-align removido do geral para controle no grid */
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
+            text-align: left;
+        }
+
+        .location-img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-card);
+            border: 4px solid rgba(255,255,255,0.1);
+        }
+
+        #location h2 { color: var(--primary); margin-bottom: 10px; }
+        .location-detail { font-size: 1.5rem; margin-bottom: 5px; }
+
+        @media (min-width: 992px) {
+            .location-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .location-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .location-content {
+                order: 2; /* Texto abaixo da imagem no mobile */
+            }
+            .location-image-wrapper {
+                order: 1;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* FAQ Accordion */
+        #faq { background-color: var(--bg-warm); }
+        
+        .accordion-item {
+            background: var(--white);
+            border-radius: var(--radius-sm);
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        .accordion-header:hover { background-color: #f9f9f9; }
+
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 20px;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: var(--text-gray);
+        }
+
+        .accordion-item.active .accordion-body {
+            max-height: 200px;
+            padding-bottom: 20px;
+        }
+        
+        .accordion-icon { transition: transform 0.3s; }
+        .accordion-item.active .accordion-icon { transform: rotate(180deg); }
+
+        footer {
+            background-color: #221211;
+            color: #888;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Loader do Botão */
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* -----------------------------------------------------------------
+           10. WHATSAPP FLUTUANTE
+           ----------------------------------------------------------------- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: #FFF;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) translateY(-5px);
+            background-color: #128C7E;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- SEÇÃO 1: HERO -->
+    <section id="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                
+                <!-- NOVA BARRA DE INFORMAÇÕES (TOPO) -->
+                <div class="hero-info-bar">
+                    <span class="hero-info-item">📅 29 de Janeiro de 2025 • Quarta-feira</span>
+                    <span class="hero-info-item">🚩 Jacutinga, MG</span>
+                </div>
+
+                <h1>ZIAH: A Experiência para Mulheres que Desejam <span>Transformar, Inspirar e Iluminar.</span></h1>
+                <p>Junte-se a mulheres visionárias e imparáveis na 2ª Edição do evento que une estratégia, propósito e conexões genuínas.</p>
+                
+                <!-- NOVA SETA ANIMADA (DUPLA E ALTERNADA) -->
+                <div class="scroll-indicator" onclick="document.getElementById('video-section').scrollIntoView({behavior: 'smooth'})">
+                    <i data-lucide="chevron-down" class="scroll-arrow" size="48"></i>
+                    <i data-lucide="chevron-down" class="scroll-arrow" size="48"></i>
+                </div>
+
+                <!-- Escondido no Desktop, visível mobile -->
+                <div style="display: none;" class="mobile-only-indicator">
+                    👇 Garanta sua vaga abaixo
+                </div>
+            </div>
+
+            <div class="capture-card">
+                <h3>Faça sua Pré-inscrição Gratuita</h3>
+                <form id="form-inscricao">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo</label>
+                        <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Melhor E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">WhatsApp (com DDD)</label>
+                        <input type="tel" id="telefone" name="telefone" placeholder="(XX) 9XXXX-XXXX" maxlength="15" required>
+                    </div>
+                    
+                    <button type="submit" class="btn" id="btn-submit">
+                        <span class="btn-text">QUERO GARANTIR MEU LUGAR</span>
+                        <div class="spinner"></div>
+                    </button>
+                    
+                    <div class="microcopy">
+                        <i data-lucide="map-pin" size="14"></i> Jacutinga - MG | 29/01 às 19:30
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 2: VÍDEO -->
+    <section id="video-section" class="section-padding">
+        <div class="container video-grid">
+            <div class="video-text">
+                <h2>Veja como foi a última edição e sinta a energia do ZIAH.</h2>
+                <p class="text-secondary">Uma atmosfera única criada para potencializar seus resultados e renovar suas forças.</p>
+            </div>
+            <div class="video-wrapper">
+                <!-- ARQUIVO LOCAL: Poster thumb-video.jpg e Vídeo video-institucional.mp4 -->
+                <video controls poster="thumb-video.jpg">
+                    <source src="video-institucional.mp4" type="video/mp4">
+                    Seu navegador não suporta vídeos.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 3: MARQUEE -->
+    <div class="marquee">
+        <div class="marquee-content">
+            <span class="marquee-item">ZIAH 2ª EDIÇÃO • LUZ E ESPLENDOR • MULHERES IMPARÁVEIS • ESTRATÉGIA E PROPÓSITO •</span>
+            <span class="marquee-item">ZIAH 2ª EDIÇÃO • LUZ E ESPLENDOR • MULHERES IMPARÁVEIS • ESTRATÉGIA E PROPÓSITO •</span>
+        </div>
+    </div>
+
+    <!-- SEÇÃO 4: PROVA SOCIAL -->
+    <section id="social-proof" class="section-padding text-center">
+        <div class="container">
+            <span class="stats-highlight">+500 MULHERES ESPERADAS</span>
+            <h2>O Ponto de Encontro da Mulher Empreendedora</h2>
+            
+            <div class="testimonials-grid">
+                <!-- Card 1 -->
+                <div class="testimonial-card">
+                    <!-- ARQUIVO LOCAL -->
+                    <img src="depoimento-1.jpg" alt="Participante" class="testimonial-img">
+                    <p class="testimonial-text">"Participar do ZIAH mudou minha visão sobre meu negócio. O networking é surreal e a energia é contagiante!"</p>
+                    <p class="testimonial-author">Participante Edição 1</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="testimonial-card">
+                    <!-- ARQUIVO LOCAL -->
+                    <img src="depoimento-2.jpg" alt="Participante" class="testimonial-img">
+                    <p class="testimonial-text">"Saí de lá com parcerias fechadas e a mente fervilhando de ideias. Impossível perder a próxima."</p>
+                    <p class="testimonial-author">Participante Edição 1</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="testimonial-card">
+                    <!-- ARQUIVO LOCAL -->
+                    <img src="depoimento-3.jpg" alt="Participante" class="testimonial-img">
+                    <p class="testimonial-text">"Não é só um evento, é uma experiência de vida. Recomendo para todas as mulheres."</p>
+                    <p class="testimonial-author">Participante Edição 1</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 5: PALESTRANTES -->
+    <section id="speakers" class="section-padding">
+        <div class="container">
+            <h2 class="text-center">Conheça quem vai guiar essa experiência</h2>
+            
+            <div class="carousel-container">
+                <div class="carousel-track" id="track">
+                    
+                    <!-- Speaker 1 -->
+                    <div class="speaker-card">
+                        <!-- ARQUIVO LOCAL -->
+                        <img src="patricia-miranda.jpg" alt="Patrícia Miranda" class="speaker-img">
+                        <div class="speaker-info">
+                            <h3 class="speaker-name">Patrícia Miranda</h3>
+                            <p class="speaker-role">Idealizadora do ZIAH, CEO MDX Eventos</p>
+                        </div>
+                    </div>
+
+                    <!-- Speaker 2 -->
+                    <div class="speaker-card">
+                        <!-- ARQUIVO LOCAL -->
+                        <img src="thayna-deps.jpg" alt="Thayná Deps" class="speaker-img">
+                        <div class="speaker-info">
+                            <h3 class="speaker-name">Thayná Deps</h3>
+                            <p class="speaker-role">Empresária</p>
+                        </div>
+                    </div>
+
+                    <!-- Speaker 3 -->
+                    <div class="speaker-card">
+                        <!-- ARQUIVO LOCAL -->
+                        <img src="gleci-carvalho.jpg" alt="Gleci Carvalho" class="speaker-img">
+                        <div class="speaker-info">
+                            <h3 class="speaker-name">Gleci Carvalho</h3>
+                            <p class="speaker-role">CEO GC Company</p>
+                        </div>
+                    </div>
+
+                    <!-- Speaker 4 -->
+                    <div class="speaker-card">
+                        <!-- ARQUIVO LOCAL -->
+                        <img src="amanda-pinatto.jpg" alt="Amanda Pinatto" class="speaker-img">
+                        <div class="speaker-info">
+                            <h3 class="speaker-name">Amanda Pinatto</h3>
+                            <p class="speaker-role">Médica Dermatologista</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="carousel-controls">
+                    <button class="control-btn" onclick="moveCarousel(-1)"><i data-lucide="chevron-left"></i></button>
+                    <button class="control-btn" onclick="moveCarousel(1)"><i data-lucide="chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 6: PILARES -->
+    <section id="pillars" class="section-padding">
+        <div class="container text-center">
+            <h2>Por que você precisa estar no ZIAH?</h2>
+            
+            <div class="pillars-grid">
+                <!-- Pilar 1 -->
+                <div class="pillar-card">
+                    <!-- ARQUIVO LOCAL -->
+                    <img src="galeria-1.jpg" class="pillar-bg" alt="Conexões">
+                    <div class="pillar-overlay">
+                        <h3 class="pillar-title">Conexões Genuínas</h3>
+                        <p>Networking real com mulheres de diversas áreas em um ambiente acolhedor.</p>
+                    </div>
+                </div>
+                <!-- Pilar 2 -->
+                <div class="pillar-card">
+                    <!-- ARQUIVO LOCAL -->
+                    <img src="galeria-2.jpg" class="pillar-bg" alt="Estratégia">
+                    <div class="pillar-overlay">
+                        <h3 class="pillar-title">Inspiração & Estratégia</h3>
+                        <p>Ferramentas práticas para alinhar sua carreira e negócios com seu propósito.</p>
+                    </div>
+                </div>
+                <!-- Pilar 3 -->
+                <div class="pillar-card">
+                    <!-- ARQUIVO LOCAL -->
+                    <img src="galeria-3.jpg" class="pillar-bg" alt="Impacto">
+                    <div class="pillar-overlay">
+                        <h3 class="pillar-title">Impacto Social</h3>
+                        <p>Apoiamos a ACAE. Sua presença não só te evolui, como transforma vidas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#hero" class="btn" style="max-width: 400px; margin: 0 auto;">QUERO VIVER ESSA EXPERIÊNCIA</a>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 7: LOCAL -->
+    <section id="location">
+        <div class="container location-grid">
+            
+            <!-- Coluna Imagem -->
+            <div class="location-image-wrapper">
+                <!-- ARQUIVO LOCAL: Renomeie seu arquivo para foto-local.jpg -->
+                <img src="foto-local.jpg" alt="Local do Evento ZIAH" class="location-img">
+            </div>
+
+            <!-- Coluna Informações -->
+            <div class="location-content">
+                <i data-lucide="map-pin" size="48" color="#F27830" style="margin-bottom: 20px;"></i>
+                <h2>Jacutinga, Minas Gerais</h2>
+                <p class="location-detail">29 de Janeiro às 19:30</p>
+                <p style="opacity: 0.9; margin-top: 15px;">Local exato será enviado no grupo exclusivo de participantes.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SEÇÃO 8: FAQ -->
+    <section id="faq" class="section-padding">
+        <div class="container" style="max-width: 800px;">
+            <h2 class="text-center" style="margin-bottom: 40px;">Perguntas Frequentes</h2>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    O evento é pago?
+                    <i data-lucide="chevron-down" class="accordion-icon"></i>
+                </div>
+                <div class="accordion-body">
+                    <p>Esta é uma pré-inscrição gratuita para garantir acesso às condições especiais de lançamento dos ingressos.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    Onde será o evento?
+                    <i data-lucide="chevron-down" class="accordion-icon"></i>
+                </div>
+                <div class="accordion-body">
+                    <p>O evento acontecerá presencialmente em Jacutinga - MG. O endereço exato será confirmado em breve dentro do grupo de participantes.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    Posso levar acompanhante?
+                    <i data-lucide="chevron-down" class="accordion-icon"></i>
+                </div>
+                <div class="accordion-body">
+                    <p>Sim, porém cada ingresso é individual. Recomendamos que compartilhe esta página para que sua convidada também faça a pré-inscrição.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 ZIAH Eventos. Todos os direitos reservados.</p>
+            <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.6;">Design & Estratégia de Conversão</p>
+        </div>
+    </footer>
+
+    <!-- BOTÃO FLUTUANTE DO WHATSAPP -->
+    <a href="https://chat.whatsapp.com/JTvmxbWhPjRAIkvXwLurzD" target="_blank" class="whatsapp-float" aria-label="Entrar no Grupo VIP">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
+    <!-- SCRIPTS -->
+    <script>
+        // 1. Inicializar Ícones Lucide
+        lucide.createIcons();
+
+        // 2. Lógica do Formulário (Captura + Redirecionamento)
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzqa-ZGl4a-J7I8K-0QbSy-IvYOSdksgCqGOIH74yvH0VbYsxVD6DWzZyt2_69w3YgQAw/exec'; // Substitua quando tiver a API
+        const form = document.getElementById('form-inscricao');
+        const btnSubmit = document.getElementById('btn-submit');
+        const btnText = btnSubmit.querySelector('.btn-text');
+        const spinner = btnSubmit.querySelector('.spinner');
+
+        // Máscara de Telefone Simples
+        const phoneInput = document.getElementById('telefone');
+        phoneInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+            if (value.length > 2) value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+            if (value.length > 9) value = `${value.slice(0, 10)}-${value.slice(10)}`;
+            e.target.value = value;
+        });
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // UI Loading
+            btnText.style.display = 'none';
+            spinner.style.display = 'block';
+            btnSubmit.disabled = true;
+
+            const formData = new FormData(form);
+
+            // ENVIO EM SEGUNDO PLANO (Background)
+            // keepalive: true impede que o navegador cancele o request ao mudar de página
+            fetch(SCRIPT_URL, { 
+                method: 'POST', 
+                body: formData,
+                keepalive: true 
+            }).catch(console.error);
+
+            // REDIRECIONAMENTO IMEDIATO
+            // Não esperamos a resposta do servidor ("then")
+            window.location.href = "https://chat.whatsapp.com/JTvmxbWhPjRAIkvXwLurzD";
+        });
+
+        // 3. Lógica do Carrossel (Loop Infinito)
+        const track = document.getElementById('track');
+        let autoPlayTimer;
+
+        // Duplicar os cards para criar a ilusão de loop infinito
+        const originalCards = Array.from(track.children);
+        originalCards.forEach(card => {
+            const clone = card.cloneNode(true);
+            track.appendChild(clone);
+        });
+
+        function moveCarousel(direction) {
+            const cardWidth = track.firstElementChild.offsetWidth;
+            const gap = 20; // igual ao gap do css
+            const scrollAmount = cardWidth + gap;
+            
+            // Largura de um conjunto completo de cards (original)
+            const singleSetWidth = (cardWidth + gap) * originalCards.length;
+            
+            if (direction === 1) {
+                // Movimento Sentido Horário (Visão indo para a direita)
+                // Se já passamos do primeiro conjunto completo, volta para o início instantaneamente
+                // O "- 10" é uma margem de segurança para garantir que já passamos do ponto
+                if (track.scrollLeft >= singleSetWidth - 10) {
+                    track.scrollLeft -= singleSetWidth;
+                }
+                track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            } else {
+                // Movimento Anti-Horário (Opcional, caso use a seta esquerda)
+                if (track.scrollLeft <= 10) {
+                    track.scrollLeft += singleSetWidth;
+                }
+                track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            }
+            
+            // Reinicia o timer se houver interação manual
+            resetAutoPlay();
+        }
+
+        function startAutoPlay() {
+            clearInterval(autoPlayTimer);
+            // Avança a cada 3 segundos (3000ms)
+            autoPlayTimer = setInterval(() => moveCarousel(1), 3000);
+        }
+
+        function resetAutoPlay() {
+            clearInterval(autoPlayTimer);
+            startAutoPlay();
+        }
+
+        // Inicia o loop automático
+        startAutoPlay();
+
+        // Pausa o loop se o usuário interagir (mouse ou toque)
+        track.addEventListener('mouseenter', () => clearInterval(autoPlayTimer));
+        track.addEventListener('mouseleave', startAutoPlay);
+        track.addEventListener('touchstart', () => clearInterval(autoPlayTimer));
+        track.addEventListener('touchend', startAutoPlay);
+
+        // 4. Lógica do Accordion (FAQ)
+        const accordions = document.querySelectorAll('.accordion-header');
+        
+        accordions.forEach(acc => {
+            acc.addEventListener('click', () => {
+                const item = acc.parentElement;
+                
+                // Fecha outros abertos (opcional, estilo accordion estrito)
+                document.querySelectorAll('.accordion-item').forEach(i => {
+                    if(i !== item) i.classList.remove('active');
+                });
+
+                item.classList.toggle('active');
+            });
+        });
+
+    </script>
+</body>
+</html>
