@@ -369,6 +369,29 @@
         .testimonial-looper {
             overflow: hidden;
             margin-top: 50px;
+            position: relative; /* Para posicionar os gradientes de fade */
+        }
+
+        /* Gradientes de fade nas laterais para um efeito suave */
+        .testimonial-looper::before,
+        .testimonial-looper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 150px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .testimonial-looper::before {
+            left: 0;
+            background: linear-gradient(to right, var(--white) 20%, transparent 100%);
+        }
+
+        .testimonial-looper::after {
+            right: 0;
+            background: linear-gradient(to left, var(--white) 20%, transparent 100%);
         }
 
         /* A faixa que se move */
