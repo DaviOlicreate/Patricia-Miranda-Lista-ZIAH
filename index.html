@@ -273,14 +273,17 @@
             .capture-card { margin-right: 0; }
         }
 
-        /* --- AJUSTES MOBILE (AGRESSIVO) --- */
+        /* --- AJUSTES MOBILE (Layout Balanceado) --- */
         @media (max-width: 991px) {
             #hero {
-                min-height: auto;
-                align-items: flex-start;
-                padding-top: 30px;      /* Reduzido */
-                padding-bottom: 30px;   /* Reduzido */
+                min-height: auto; /* Altura definida pelo conteúdo, permitindo scroll */
+                align-items: flex-start; /* Conteúdo alinhado ao topo */
+                padding-top: 80px;      /* Espaço confortável no topo (área de respiro) */
+                padding-bottom: 80px;   /* Espaço confortável embaixo */
             }
+
+            /* A regra de padding lateral de 20px já é aplicada globalmente 
+               pela classe .container, o que atende sua recomendação (16px-24px). */
 
             .hero-grid {
                 width: 100%;
@@ -290,50 +293,47 @@
                 text-align: center;
             }
 
-            /* Esconde a seta de scroll para ganhar espaço */
-            .scroll-indicator {
-                display: none;
-            }
+            /* A seta de scroll volta a ser visível, pois a regra que a escondia foi removida */
 
             .hero-content h1 {
-                font-size: 1.8rem; /* Reduzido */
-                margin-bottom: 10px; /* Reduzido */
+                font-size: 2.2rem; /* Tamanho de título impactante mas legível */
+                margin-bottom: 15px;
             }
 
             .hero-content p {
-                font-size: 1rem; /* Reduzido */
-                margin-bottom: 15px; /* Reduzido */
+                font-size: 1.1rem; /* Tamanho de parágrafo confortável */
+                margin-bottom: 25px;
             }
             
             .hero-info-bar {
                 justify-content: center;
                 margin-left: auto;
                 margin-right: auto;
-                margin-bottom: 15px; /* Ajuste fino */
+                margin-bottom: 25px;
             }
 
             .capture-card {
                 width: 100%;
                 max-width: 100%;
-                margin-top: 25px; /* Reduzido */
-                padding: 25px; /* Reduzido */
+                margin-top: 40px;
+                padding: 30px;
             }
 
             .capture-card h3 {
-                font-size: 1.3rem; /* Adicionado para reduzir */
-                margin-bottom: 15px; /* Reduzido */
+                font-size: 1.5rem;
+                margin-bottom: 20px;
             }
 
             .form-group {
-                margin-bottom: 10px; /* Reduzido */
+                margin-bottom: 15px;
             }
 
-            #hero .btn { /* Aumenta especificidade para o botão do Hero */
-                padding: 14px 32px; /* Reduzido */
+            #hero .btn {
+                padding: 16px 32px; /* Padding padrão do botão */
             }
 
             .microcopy {
-                margin-top: 10px; /* Reduzido */
+                margin-top: 15px;
             }
         }
 
