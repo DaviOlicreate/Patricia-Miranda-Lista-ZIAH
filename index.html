@@ -273,52 +273,45 @@
             .capture-card { margin-right: 0; }
         }
 
-        /* --- AJUSTES MOBILE (Prioridade de formulário) --- */
+        /* --- AJUSTES MOBILE --- */
         @media (max-width: 991px) {
             #hero {
-                padding-top: 50px; /* Respiro no topo */
-                padding-bottom: 50px; /* Respiro no rodapé */
-                min-height: auto; /* Altura automática para o conteúdo caber */
-                align-items: flex-start; /* Alinha ao topo */
+                padding-top: 60px;      /* Adiciona respiro no topo */
+                padding-bottom: 60px;   /* Adiciona respiro embaixo */
+                align-items: center;    /* Re-centraliza o conteúdo do hero */
             }
 
-            .hero-grid {
-                display: flex;
-                flex-direction: column;
-            }
-
+            /* O .hero-grid por padrão já é uma coluna, então não precisamos de flex/order */
+            
             .hero-content {
-                order: 2; /* Texto vem DEPOIS do formulário */
-                text-align: center; /* Centraliza textos */
+                text-align: center;
             }
 
             .capture-card {
-                order: 1; /* Formulário vem ANTES do texto */
+                /* O formulário agora fica depois do conteúdo por padrão */
                 width: 100%;
                 max-width: 100%;
-                margin-bottom: 40px;
+                margin-top: 40px; /* Adiciona espaço acima do formulário */
                 padding: 30px;
             }
 
             .hero-content h1 {
-                font-size: 1.8rem; /* Fonte menor para caber */
+                font-size: 2.2rem; /* Aumenta um pouco a fonte */
                 margin-bottom: 15px;
             }
 
             .hero-content p {
-                font-size: 1rem;
+                font-size: 1.1rem;
                 margin-bottom: 20px;
             }
             
             .hero-info-bar {
-                justify-content: center; /* Centraliza a barra de infos */
+                justify-content: center;
                 margin-left: auto;
                 margin-right: auto;
             }
 
-            .scroll-indicator {
-                display: none; /* Esconde a seta de scroll, pois não precisa rolar */
-            }
+            /* A seta de scroll (.scroll-indicator) volta a aparecer, pois a regra display:none foi removida */
         }
 
         /* -----------------------------------------------------------------
