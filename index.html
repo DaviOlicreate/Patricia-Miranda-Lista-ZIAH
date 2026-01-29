@@ -276,27 +276,29 @@
         /* --- AJUSTES MOBILE --- */
         @media (max-width: 991px) {
             #hero {
+                min-height: auto;       /* Deixa a altura ser definida pelo conteúdo */
+                align-items: flex-start;  /* Alinha o conteúdo no topo */
                 padding-top: 60px;      /* Adiciona respiro no topo */
                 padding-bottom: 60px;   /* Adiciona respiro embaixo */
-                align-items: center;    /* Re-centraliza o conteúdo do hero */
             }
 
-            /* O .hero-grid por padrão já é uma coluna, então não precisamos de flex/order */
+            .hero-grid {
+                width: 100%; /* Garante que a grid ocupe o espaço */
+            }
             
             .hero-content {
                 text-align: center;
             }
 
             .capture-card {
-                /* O formulário agora fica depois do conteúdo por padrão */
                 width: 100%;
                 max-width: 100%;
-                margin-top: 40px; /* Adiciona espaço acima do formulário */
+                margin-top: 40px; /* Espaço entre texto e form */
                 padding: 30px;
             }
 
             .hero-content h1 {
-                font-size: 2.2rem; /* Aumenta um pouco a fonte */
+                font-size: 2rem; /* Reduz a fonte para garantir que cabe */
                 margin-bottom: 15px;
             }
 
@@ -310,8 +312,6 @@
                 margin-left: auto;
                 margin-right: auto;
             }
-
-            /* A seta de scroll (.scroll-indicator) volta a aparecer, pois a regra display:none foi removida */
         }
 
         /* -----------------------------------------------------------------
