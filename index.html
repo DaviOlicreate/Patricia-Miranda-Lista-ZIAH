@@ -273,6 +273,54 @@
             .capture-card { margin-right: 0; }
         }
 
+        /* --- AJUSTES MOBILE (Prioridade de formulário) --- */
+        @media (max-width: 991px) {
+            #hero {
+                padding-top: 50px; /* Respiro no topo */
+                padding-bottom: 50px; /* Respiro no rodapé */
+                min-height: auto; /* Altura automática para o conteúdo caber */
+                align-items: flex-start; /* Alinha ao topo */
+            }
+
+            .hero-grid {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .hero-content {
+                order: 2; /* Texto vem DEPOIS do formulário */
+                text-align: center; /* Centraliza textos */
+            }
+
+            .capture-card {
+                order: 1; /* Formulário vem ANTES do texto */
+                width: 100%;
+                max-width: 100%;
+                margin-bottom: 40px;
+                padding: 30px;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem; /* Fonte menor para caber */
+                margin-bottom: 15px;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+            
+            .hero-info-bar {
+                justify-content: center; /* Centraliza a barra de infos */
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .scroll-indicator {
+                display: none; /* Esconde a seta de scroll, pois não precisa rolar */
+            }
+        }
+
         /* -----------------------------------------------------------------
            4. SEÇÃO VÍDEO
            ----------------------------------------------------------------- */
