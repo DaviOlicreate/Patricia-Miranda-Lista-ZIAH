@@ -273,44 +273,67 @@
             .capture-card { margin-right: 0; }
         }
 
-        /* --- AJUSTES MOBILE --- */
+        /* --- AJUSTES MOBILE (AGRESSIVO) --- */
         @media (max-width: 991px) {
             #hero {
-                min-height: auto;       /* Deixa a altura ser definida pelo conteúdo */
-                align-items: flex-start;  /* Alinha o conteúdo no topo */
-                padding-top: 60px;      /* Adiciona respiro no topo */
-                padding-bottom: 60px;   /* Adiciona respiro embaixo */
+                min-height: auto;
+                align-items: flex-start;
+                padding-top: 30px;      /* Reduzido */
+                padding-bottom: 30px;   /* Reduzido */
             }
 
             .hero-grid {
-                width: 100%; /* Garante que a grid ocupe o espaço */
+                width: 100%;
             }
             
             .hero-content {
                 text-align: center;
             }
 
-            .capture-card {
-                width: 100%;
-                max-width: 100%;
-                margin-top: 40px; /* Espaço entre texto e form */
-                padding: 30px;
+            /* Esconde a seta de scroll para ganhar espaço */
+            .scroll-indicator {
+                display: none;
             }
 
             .hero-content h1 {
-                font-size: 2rem; /* Reduz a fonte para garantir que cabe */
-                margin-bottom: 15px;
+                font-size: 1.8rem; /* Reduzido */
+                margin-bottom: 10px; /* Reduzido */
             }
 
             .hero-content p {
-                font-size: 1.1rem;
-                margin-bottom: 20px;
+                font-size: 1rem; /* Reduzido */
+                margin-bottom: 15px; /* Reduzido */
             }
             
             .hero-info-bar {
                 justify-content: center;
                 margin-left: auto;
                 margin-right: auto;
+                margin-bottom: 15px; /* Ajuste fino */
+            }
+
+            .capture-card {
+                width: 100%;
+                max-width: 100%;
+                margin-top: 25px; /* Reduzido */
+                padding: 25px; /* Reduzido */
+            }
+
+            .capture-card h3 {
+                font-size: 1.3rem; /* Adicionado para reduzir */
+                margin-bottom: 15px; /* Reduzido */
+            }
+
+            .form-group {
+                margin-bottom: 10px; /* Reduzido */
+            }
+
+            #hero .btn { /* Aumenta especificidade para o botão do Hero */
+                padding: 14px 32px; /* Reduzido */
+            }
+
+            .microcopy {
+                margin-top: 10px; /* Reduzido */
             }
         }
 
