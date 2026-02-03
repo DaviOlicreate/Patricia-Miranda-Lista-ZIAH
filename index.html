@@ -5,6 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZIAH - 2ª Edição | Luz e Esplendor</title>
     <meta name="description" content="Junte-se a mulheres visionárias na 2ª Edição do evento que une estratégia, propósito e conexões genuínas em Jacutinga-MG.">
+    <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '677613505365495');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=677613505365495&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 
     <!-- FAVICON (Ícone da aba do navegador) -->
     <!-- Salve sua logo como 'favicon.png' na mesma pasta deste arquivo -->
@@ -1091,8 +1108,8 @@
         phoneInput.addEventListener('input', (e) => {
             let value = e.target.value.replace(/\D/g, '');
             if (value.length > 11) value = value.slice(0, 11);
-            if (value.length > 2) value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
-            if (value.length > 9) value = `${value.slice(0, 10)}-${value.slice(10)}`;
+            if (value.length > 2) value = (${value.slice(0, 2)}) ${value.slice(2)};
+            if (value.length > 9) value = ${value.slice(0, 10)}-${value.slice(10)};
             e.target.value = value;
         });
 
