@@ -1,17 +1,1041 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZIAH - 2ª Edição | Luz e Esplendor</title>
-    <meta name="description" content="Junte-se a mulheres visionárias na 2ª Edição do evento que une estratégia, propósito e conexões genuínas em Jacutinga-MG." />
-    <meta property="og:title" content="ZIAH - 2ª Edição | Luz e Esplendor" />
-    <meta property="og:description" content="Evento para mulheres empreendedoras que desejam transformar, inspirar e iluminar." />
-    <meta property="og:type" content="website" />
-  </head>
+    <meta name="description" content="Junte-se a mulheres visionárias na 2ª Edição do evento que une estratégia, propósito e conexões genuínas em Jacutinga-MG.">
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <!-- FAVICON (Ícone da aba do navegador) -->
+    <!-- Salve sua logo como 'favicon.png' na mesma pasta deste arquivo -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Ícones Lucide (Leve e SVG) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* -----------------------------------------------------------------
+           1. VARIÁVEIS E RESET (DESIGN SYSTEM ZIAH)
+           ----------------------------------------------------------------- */
+        :root {
+            /* Paleta de Cores */
+            --primary: #F27830;       /* Laranja Vibrante */
+            --primary-dark: #d65d1e;  /* Laranja Escuro (Hover) */
+            --secondary: #4A2C2A;     /* Marrom Café Profundo */
+            --secondary-light: #6b4340;
+            --bg-warm: #FAF5EF;       /* Beige/Off-white quente */
+            --white: #FFFFFF;
+            --text-dark: #333333;
+            --text-gray: #666666;
+            
+            /* Tipografia */
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Montserrat', sans-serif;
+
+            /* Espaçamentos e Layout */
+            --container-width: 1200px;
+            --gutter: 20px;
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            
+            /* Sombras (Warm Luxury) */
+            --shadow-card: 0 10px 30px rgba(74, 44, 42, 0.08);
+            --shadow-float: 0 20px 40px rgba(242, 120, 48, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--secondary);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* -----------------------------------------------------------------
+           2. UTILITÁRIOS E TIPOGRAFIA
+           ----------------------------------------------------------------- */
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--gutter);
+        }
+
+        .text-center { text-align: center; }
+        .text-primary { color: var(--primary); }
+        .text-secondary { color: var(--secondary); }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            font-family: var(--font-sans);
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 16px 32px;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(242, 120, 48, 0.3);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(242, 120, 48, 0.4);
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        @media (max-width: 768px) {
+            .section-padding { padding: 60px 0; }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.8rem; }
+        }
+
+        /* -----------------------------------------------------------------
+           3. SEÇÃO HERO (DOBRA 1)
+           ----------------------------------------------------------------- */
+        #hero {
+            position: relative;
+            min-height: 100vh; /* Ocupa a tela toda */
+            display: flex;
+            align-items: center;
+            /* ARQUIVO LOCAL: Certifique-se de que hero-bg.jpg está na pasta */
+            background-image: linear-gradient(to right, rgba(20, 10, 5, 0.85), rgba(74, 44, 42, 0.6)), url('hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        /* Novo estilo para a barra de informações no topo */
+        .hero-info-bar {
+            display: inline-flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 24px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #fcece4;
+            letter-spacing: 0.5px;
+        }
+        
+        .hero-info-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Animação da Seta Dupla Alternada */
+        .scroll-indicator {
+            margin-top: 20px;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        .scroll-arrow {
+            display: block;
+            margin-top: -30px; /* Sobreposição para conectar as setas */
+            animation: arrow-pulse 2s infinite ease-in-out;
+        }
+
+        .scroll-arrow:first-child {
+            margin-top: 0;
+        }
+
+        /* Atraso na segunda seta para criar o efeito alternado */
+        .scroll-arrow:last-child {
+            animation-delay: 1s; 
+        }
+
+        @keyframes arrow-pulse {
+            0%, 100% { opacity: 0.1; transform: translateY(0); }
+            50% { opacity: 1; transform: translateY(10px); }
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero-content h1 span {
+            color: var(--primary);
+            font-style: italic;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 10px; /* Reduzi um pouco para aproximar a seta */
+            opacity: 0.9;
+        }
+
+        /* Card de Captura */
+        .capture-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-float);
+            max-width: 450px;
+            margin: 0 auto;
+            color: var(--secondary);
+            border-top: 5px solid var(--primary);
+        }
+
+        .capture-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .microcopy {
+            font-size: 0.8rem;
+            text-align: center;
+            color: var(--text-gray);
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        @media (min-width: 992px) {
+            .hero-grid { grid-template-columns: 1.2fr 1fr; }
+            .hero-content h1 { font-size: 3.5rem; }
+            .capture-card { margin-right: 0; }
+        }
+
+        /* --- AJUSTES MOBILE (AGRESSIVO) --- */
+        @media (max-width: 991px) {
+            #hero {
+                min-height: auto;
+                align-items: flex-start;
+                padding-top: 30px;      /* Reduzido */
+                padding-bottom: 30px;   /* Reduzido */
+            }
+
+            .hero-grid {
+                width: 100%;
+            }
+            
+            .hero-content {
+                text-align: center;
+            }
+
+            /* Esconde a seta de scroll para ganhar espaço */
+            .scroll-indicator {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem; /* Reduzido */
+                margin-bottom: 10px; /* Reduzido */
+            }
+
+            .hero-content p {
+                font-size: 1rem; /* Reduzido */
+                margin-bottom: 15px; /* Reduzido */
+            }
+            
+            .hero-info-bar {
+                justify-content: center;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 15px; /* Ajuste fino */
+                font-size: 0.7rem; /* Reduzido para mobile */
+            }
+
+            .capture-card {
+                width: 100%;
+                max-width: 100%;
+                margin-top: 25px; /* Reduzido */
+                padding: 25px; /* Reduzido */
+            }
+
+            .capture-card h3 {
+                font-size: 1.3rem; /* Adicionado para reduzir */
+                margin-bottom: 15px; /* Reduzido */
+            }
+
+            .form-group {
+                margin-bottom: 10px; /* Reduzido */
+            }
+
+            #hero .btn { /* Aumenta especificidade para o botão do Hero */
+                padding: 14px 32px; /* Reduzido */
+            }
+
+            .microcopy {
+                margin-top: 10px; /* Reduzido */
+            }
+        }
+
+        /* -----------------------------------------------------------------
+           4. SEÇÃO VÍDEO
+           ----------------------------------------------------------------- */
+        #video-section {
+            background-color: var(--bg-warm);
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .video-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            background: #000;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+        }
+
+        .video-wrapper video, .video-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media (min-width: 992px) {
+            .video-grid { grid-template-columns: 1fr 1.2fr; }
+        }
+
+        /* -----------------------------------------------------------------
+           5. MARQUEE (Barra de Reforço)
+           ----------------------------------------------------------------- */
+        .marquee {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 15px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+
+        .marquee-item {
+            display: inline-block;
+            padding: 0 40px;
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* -----------------------------------------------------------------
+           6. PROVA SOCIAL (com Carrossel)
+           ----------------------------------------------------------------- */
+        #social-proof {
+            background-color: var(--white);
+        }
+
+        .stats-highlight {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* O contêiner que esconde o overflow */
+        .testimonial-looper {
+            overflow: hidden;
+            margin-top: 50px;
+            position: relative; /* Para posicionar os gradientes de fade */
+        }
+
+        /* Gradientes de fade nas laterais para um efeito suave */
+        .testimonial-looper::before,
+        .testimonial-looper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 150px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .testimonial-looper::before {
+            left: 0;
+            background: linear-gradient(to right, var(--white) 20%, transparent 100%);
+        }
+
+        .testimonial-looper::after {
+            right: 0;
+            background: linear-gradient(to left, var(--white) 20%, transparent 100%);
+        }
+
+        /* A faixa que se move */
+        .testimonials-grid {
+            display: flex;
+            gap: 30px;
+            width: max-content; /* Importante para que a faixa seja larga o suficiente */
+            animation: scroll-testimonials 40s linear infinite;
+        }
+
+        /* Pausa a animação no hover */
+        .testimonial-looper:hover .testimonials-grid {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll-testimonials {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        .testimonial-card {
+            background: var(--bg-warm);
+            padding: 30px;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            transition: transform 0.3s;
+            width: 450px; /* Largura fixa para cada card */
+            flex-shrink: 0; /* Impede que os cards encolham */
+        }
+
+        .testimonial-card:hover { transform: translateY(-5px); }
+
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 3px solid var(--primary);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            font-family: var(--font-serif);
+            margin-bottom: 15px;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        
+        /* A regra de mídia anterior foi removida pois agora o layout é flexível */
+
+
+        /* -----------------------------------------------------------------
+           7. PALESTRANTES (Carrossel Interativo)
+           ----------------------------------------------------------------- */
+        #speakers {
+            background-color: var(--bg-warm);
+            overflow: hidden;
+        }
+
+        .carousel-container {
+            position: relative;
+            margin-top: 40px;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 20px;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE */
+        }
+
+        .carousel-track::-webkit-scrollbar { display: none; }
+
+        .speaker-card {
+            flex: 0 0 85%; /* Mobile: 85% width */
+            scroll-snap-align: center;
+            background: var(--white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            position: relative;
+        }
+
+        .speaker-img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .speaker-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .speaker-name {
+            font-size: 1.25rem;
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+
+        .speaker-role {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Controles do Carrossel */
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .control-btn {
+            background: var(--secondary);
+            color: var(--white);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .control-btn:hover { background: var(--primary); }
+
+        @media (min-width: 768px) {
+            .speaker-card { flex: 0 0 calc(33.333% - 14px); } /* Desktop: 3 cards */
+        }
+
+        /* -----------------------------------------------------------------
+           8. PILARES E BENEFÍCIOS
+           ----------------------------------------------------------------- */
+        #pillars {
+            background-color: var(--white);
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .pillar-card {
+            position: relative;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            height: 300px;
+            group: 1;
+        }
+
+        .pillar-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .pillar-card:hover .pillar-bg { transform: scale(1.1); }
+
+        .pillar-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(74,44,42, 0.9), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            color: var(--white);
+        }
+
+        .pillar-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        @media (min-width: 992px) {
+            .pillars-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        /* -----------------------------------------------------------------
+           9. LOCAL, FAQ E FOOTER
+           ----------------------------------------------------------------- */
+        #location {
+            background-color: var(--secondary);
+            color: var(--bg-warm);
+            padding: 60px 0;
+            /* text-align removido do geral para controle no grid */
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
+            text-align: left;
+        }
+
+        .location-img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-card);
+            border: 4px solid rgba(255,255,255,0.1);
+        }
+
+        #location h2 { color: var(--primary); margin-bottom: 10px; }
+        .location-detail { font-size: 1.5rem; margin-bottom: 5px; }
+
+        @media (min-width: 992px) {
+            .location-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .location-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .location-content {
+                order: 2; /* Texto abaixo da imagem no mobile */
+            }
+            .location-image-wrapper {
+                order: 1;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* FAQ Accordion */
+        #faq { background-color: var(--bg-warm); }
+        
+        .accordion-item {
+            background: var(--white);
+            border-radius: var(--radius-sm);
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        .accordion-header:hover { background-color: #f9f9f9; }
+
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 20px;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: var(--text-gray);
+        }
+
+        .accordion-item.active .accordion-body {
+            max-height: 200px;
+            padding-bottom: 20px;
+        }
+        
+        .accordion-icon { transition: transform 0.3s; }
+        .accordion-item.active .accordion-icon { transform: rotate(180deg); }
+
+        footer {
+            background-color: #221211;
+            color: #888;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Loader do Botão */
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* -----------------------------------------------------------------
+           10. WHATSAPP FLUTUANTE
+           ----------------------------------------------------------------- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: #FFF;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) translateY(-5px);
+            background-color: #128C7E;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        
+        /* STYLES FOR TICKET CARD */
+        .ticket-option {
+            border: 1px solid #eee;
+            padding: 20px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 20px;
+        }
+        .ticket-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        .ticket-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-top: 10px;
+        }
+        .ticket-fee {
+            font-size: 1rem;
+            color: var(--text-gray);
+            font-weight: 400;
+        }
+        .ticket-installments, .ticket-deadline {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .quantity-selector button {
+            background: #eee;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .quantity-selector span {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        .total-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+        }
+        .tax-info-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+        /* STYLES FOR SCHEDULE */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        @media (min-width: 768px) {
+            .schedule-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .schedule-day h3 {
+            font-family: var(--font-serif);
+            color: var(--primary);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--bg-warm);
+            padding-bottom: 10px;
+        }
+        .schedule-day ul {
+            list-style: none;
+            padding: 0;
+        }
+        .schedule-day li {
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        /* STYLES FOR INCLUDES SECTION */
+        .includes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .include-item {
+            background: var(--white);
+            padding: 20px;
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-card);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '677613505365495');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=677613505365495&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+    </style>
+</head>
+<body>
+
+    <!-- SEÇÃO 1: HERO (MODIFICADA) -->
+    <section id="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <h1>ZIAH: Um encontro para mulheres que decidiram viver com propósito, direção e posicionamento.</h1>
+                <p>11 e 12 de Abril | Hotel Quinta das Águas. Dois dias de conexão, crescimento, estratégia e transformação real.</p>
+                
+                <div class="scroll-indicator" onclick="document.getElementById('ticket-section').scrollIntoView({behavior: 'smooth'})">
+                    <i data-lucide="chevron-down" class="scroll-arrow" size="48"></i>
+                    <i data-lucide="chevron-down" class="scroll-arrow" size="48"></i>
+                </div>
+            </div>
+
+            <div id="ticket-section" class="capture-card">
+                <h3>Garanta seu Ingresso</h3>
+                
+                <div class="ticket-option">
+                    <div class="ticket-title">
+                        <h4>ZIAH</h4>
+                        <i data-lucide="check-circle" style="color: #2e9bf5;"></i>
+                    </div>
+                    <p class="ticket-price">R$ 527,80 <span class="ticket-fee">(+52,78 taxa)</span></p>
+                    <p class="ticket-installments">em até 12x</p>
+                    <p class="ticket-deadline">Vendas até 12/04/2026</p>
+                </div>
+
+                <div class="quantity-selector">
+                    <button>-</button>
+                    <span>1</span>
+                    <button>+</button>
+                </div>
+
+                <div class="total-price">
+                    <span>Total R$ 580,58</span>
+                    <small>ou 12x R$ 60,05</small>
+                </div>
+                
+                <a href="https://www.sympla.com.br/evento/ziah/3329366?_gl=1*1nbnbe5*_gcl_aw*R0NMLjE3NzIzOTc2MjcuQ2owS0NRaUE1SV9OQmhEVkFSSXNBT3JxSXNZaXNkNXZVTTBHMjU5Z2RCWDk2MUpBN21RX1VIekFDd3pFWnRtbUlsUmNHT29VUlo5blNjVWFBcXliRUFMd193Y0I.*_gcl_au*MTY3NjczMDM2NC4xNzcyMzk3NjI2LjM0NDk1NTk3My4xNzcyMzk3NjkwLjE3NzIzOTc2OTA.*_ga*MTkyNDYzMTcxMi4xNzcyMzk3NjI3*_ga_KXH10SQTZF*czE3NzIzOTc2MjYkbzEkZzEkdDE3NzIzOTg1NDUkajUyJGwwJGg1OTU3NTA3Ng..&share_id=copiarlink" target="_blank" class="btn" style="background-color: #28a745; margin-top: 20px;">
+                    Comprar Ingressos
+                </a>
+
+                <a href="#" class="tax-info-link">(i) Entenda nossa taxa</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 2: PROGRAMAÇÃO -->
+    <section id="schedule" class="section-padding">
+        <div class="container">
+            <h2 class="text-center" style="margin-bottom: 50px;">Programação Oficial</h2>
+            
+            <div class="schedule-grid">
+                <!-- SÁBADO -->
+                <div class="schedule-day">
+                    <h3>SÁBADO – 11 DE ABRIL</h3>
+                    <ul>
+                        <li><strong>08:00 – 09:00 |</strong> Credenciamento & Welcome Coffee</li>
+                        <li><strong>09:00 – 10:00 |</strong> Abertura Oficial – Patrícia Miranda</li>
+                        <li><strong>10:00 – 10:30 |</strong> Coffee Break</li>
+                        <li><strong>10:30 – 12:30 |</strong> Talk Show – 6 Grandes Mulheres</li>
+                        <li><strong>12:30 – 14:30 |</strong> Intervalo para Almoço</li>
+                        <li><strong>14:30 – 16:30 |</strong> Mentoria Estratégica com Patrícia Miranda</li>
+                        <li><strong>17:00 – 19:00 |</strong> Talk Show – Histórias de Desafios e Superação</li>
+                    </ul>
+                </div>
+
+                <!-- DOMINGO -->
+                <div class="schedule-day">
+                    <h3>DOMINGO – 12 DE ABRIL</h3>
+                    <ul>
+                        <li><strong>09:00 – 10:00 |</strong> Aula de Alongamento & Conexão</li>
+                        <li><strong>11:00 – 13:00 |</strong> Mentoria Final & Direcionamento Prático</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 3: O QUE ESTÁ INCLUSO -->
+    <section id="includes" class="section-padding" style="background-color: var(--bg-warm);">
+        <div class="container text-center">
+            <h2>O Pacote ZIAH Inclui</h2>
+            <div class="includes-grid">
+                <div class="include-item"><i data-lucide="award"></i> Mentorias exclusivas</div>
+                <div class="include-item"><i data-lucide="gift"></i> Kit personalizado</div>
+                <div class="include-item"><i data-lucide="book-open"></i> Apostila impressa</div>
+                <div class="include-item"><i data-lucide="book"></i> E-book digital</div>
+                <div class="include-item"><i data-lucide="coffee"></i> 2 Coffee Breaks</div>
+                <div class="include-item"><i data-lucide="glass-water"></i> Água e café liberados</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 4: INFORMAÇÕES ADICIONAIS -->
+    <section id="additional-info" class="section-padding">
+        <div class="container text-center" style="max-width: 800px;">
+            <h2>Hospedagem & Alimentação</h2>
+            <p style="margin-bottom: 20px;">Hospedagem e alimentação são por conta de cada participante. O Hotel Quinta das Águas oferece opção de pensão completa, proporcionando uma experiência ainda mais imersiva e confortável durante o evento.</p>
+            <hr style="border: 0; height: 1px; background: #ddd; margin: 40px auto; width: 50%;">
+            <h2>ZIAH não é apenas um evento.</h2>
+            <p>É um divisor de águas. É posicionamento. É clareza. É conexão entre mulheres que decidiram crescer.</p>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 ZIAH Eventos. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- BOTÃO FLUTUANTE DO WHATSAPP -->
+    <a href="https://chat.whatsapp.com/KcToyy6RRdo8fbjhND6k1P?mode=gi_c" target="_blank" class="whatsapp-float" aria-label="Entrar no Grupo VIP">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
+    <!-- SCRIPTS -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
 </html>
